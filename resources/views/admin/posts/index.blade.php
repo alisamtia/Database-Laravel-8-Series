@@ -1,4 +1,3 @@
-@dd($posts)
 <x-layout>
     <x-slot name="data">
         <x-setting title="Publish New Post!">
@@ -14,7 +13,7 @@
                                             <div class="flex items-center">
                                                 <div class="text-sm font-medium text-gray-900">
                                                     <a href="/posts/{{ $post->slug }}">
-                                                        <!-- {{ dd($post->title) }} -->
+                                                        {{ $post->title }}
                                                     </a>
                                                 </div>
                                             </div>
