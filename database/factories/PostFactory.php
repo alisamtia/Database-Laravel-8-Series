@@ -20,9 +20,10 @@ class PostFactory extends Factory
     {
         return [
             'slug' => fake()->slug(),
-            'user_id' => User::factory(),
-            'category_id' => Category::factory(),
+            'user_id' => User::factory()->create(),
+            'category_id' => Category::factory()->create(),
             'title' => fake()->sentence(),
+            'thumbnail' => "thumbnails/illustration-".rand(1,5).".png",
             'excerpt' => fake()->paragraphs(2, true),
             'body' => fake()->paragraphs(6, true),
         ];

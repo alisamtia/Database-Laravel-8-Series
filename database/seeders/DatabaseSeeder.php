@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         user::factory(3);
         category::factory(30);
-        Post::factory(5)->create(['user_id' => 3, "category_id" => 1]);
+        Post::factory(5)->create(['user_id' => 1, "category_id" => 1]);
         Post::factory(30)->create();
     }
 }

@@ -21,13 +21,20 @@
                 </a>
             </div>
 
-            <div class="mt-8 md:mt-0 flex items-center">
+            <div class="mt-8 gap-4 md:mt-0 flex items-center">
                 @auth
-                <p class="text-xs mt-1 mr-3 font-bold uppercase">Welcome Back, {{auth()->user()->name}}</p>
-                <form method="POST" action="/logout">
-                    @csrf
-                    <button type="submit" class="text-xs font-bold uppercase">Logout</button>
-                </form>
+                <x-dropdown trigger="Welcome Back, {{auth()->user()->name}}">
+                    <x-dropdown-item href="/admin/dashboard">Dashboard</x-dropdown-item>
+                    <x-dropdown-item href="/admin/posts/create">Create Post</x-dropdown-item>
+
+                    <x-dropdown-item>
+                        <form method="POST" action="/logout">
+                            @csrf
+                            <button type="submit" class="block text-left text-sm leading-6 hover:bg-blue-400 focus:bg-blue-400">Logout</button>
+                        </form>
+                    </x-dropdown-item>
+                </x-dropdown>
+
                 @else
                 <a href="/register" class="text-xs mr-3 font-bold uppercase">Register</a>
                 <a href="/login" class="text-xs font-bold uppercase">Login</a>
