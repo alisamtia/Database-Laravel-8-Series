@@ -24,8 +24,8 @@
             <div class="mt-8 gap-4 md:mt-0 flex items-center">
                 @auth
                 <x-dropdown trigger="Welcome Back, {{auth()->user()->name}}">
-                    <x-dropdown-item href="/admin/dashboard">Dashboard</x-dropdown-item>
-                    <x-dropdown-item href="/admin/posts/create">Create Post</x-dropdown-item>
+                    <x-dropdown-item href="/admin/dashboard" class="{{request()->is('admin/dashboard') ? 'bg-blue-500 text-white' : ''}}">Dashboard</x-dropdown-item>
+                    <x-dropdown-item href="/admin/posts/create" class="{{request()->is('admin/posts/create') ? 'bg-blue-500 text-white' : ''}}">Create Post</x-dropdown-item>
 
                     <x-dropdown-item>
                         <form method="POST" action="/logout">
