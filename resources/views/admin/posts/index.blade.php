@@ -27,7 +27,6 @@
                                             <form method="POST" action="/admin/posts/{{ $post->id }}">
                                                 @csrf
                                                 @method('DELETE')
-
                                                 <button class="text-xs text-gray-400">Delete</button>
                                             </form>
                                         </td>
@@ -35,6 +34,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="my-3 mx-5">
+                            {{$posts->links()}}
+                        </div>
                     </div>
                 </div>
             </div>

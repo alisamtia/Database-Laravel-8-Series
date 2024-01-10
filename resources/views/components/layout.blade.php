@@ -24,8 +24,10 @@
             <div class="mt-8 gap-4 md:mt-0 flex items-center">
                 @auth
                 <x-dropdown trigger="Welcome Back, {{auth()->user()->name}}">
+                    @admin
                     <x-dropdown-item href="/admin/posts" class="{{request()->is('admin/posts') ? 'bg-blue-500 text-white' : ''}}">All Posts</x-dropdown-item>
                     <x-dropdown-item href="/admin/posts/create" class="{{request()->is('admin/posts/create') ? 'bg-blue-500 text-white' : ''}}">Create Post</x-dropdown-item>
+                    @endadmin
 
                     <x-dropdown-item>
                         <form method="POST" action="/logout">

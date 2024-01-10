@@ -1,13 +1,18 @@
 <x-layout>
     <x-slot name="data">
-        <x-setting title="Publish New Post!">
-        <form action="/admin/posts/create" method="POST" enctype="multipart/form-data">
+        <x-setting title="Edit: {{$post->title}}">
+        <form action="/admin/posts/{{$post->id}}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <x-form.text name="title" />
-                <x-form.text name="slug" />
-                <x-form.text name="thumbnail" type="file" />
-                <x-form.textarea name="excerpt" rows="5">{{old("excerpt")}}</x-form.textarea>
-                <x-form.textarea name="body">{{old("body")}}</x-form.textarea>
+                @method("PATCH")
+                <x-form.text name="title" :value="old('title',$post->title)" />
+                <x-form.text name="slug" :value="old('slug',$post->slug)" />
+
+                <div class="flex gap-4 mt-6">
+                    <div class="flex-1"><x-form.text name="thumbnail" type="file" :value="old('thumbnail',$post->thumbnail)" /></div>
+                    <img width="100" class="rounded-xl" src="/storage/{{$post->thumbnail}}">
+                </div>
+                <x-form.textarea name="excerpt" rows="5">{{old('excerpt',$post->excerpt)}}</x-form.textarea>
+                <x-form.textarea name="body">{{old('body',$post->body)}}</x-form.textarea>
 
                 <x-form.field>
                     <x-form.label name="Category:" />
@@ -18,7 +23,7 @@
                         @endforeach
                     </select>
                     <x-form.error name="category_id" />
-                    <x-form.button name="Publish Post" />
+                    <x-form.button name="Update Post" />
                 </x-form.field>
             </form>
         </x-setting>
